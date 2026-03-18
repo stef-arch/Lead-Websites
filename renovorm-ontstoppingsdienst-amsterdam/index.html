@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renovorm - Ontstoppingsdienst Amsterdam | 40+ Jaar Ervaring</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Fixed Navigation */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 3px solid #f97316;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #f97316;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            color: #f97316;
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="30" fill="none" stroke="rgba(249,115,22,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #f97316;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: #f97316;
+            color: white;
+        }
+
+        /* Services Grid */
+        .services {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .service-link {
+            color: #f97316;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-link:hover {
+            gap: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            padding: 5rem 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .experience-badge {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #f97316;
+            display: block;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Quote Section */
+        .quote {
+            background: #0f172a;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .quote blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: #f8fafc;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #f97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #f97316;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #f97316;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            color: #94a3b8;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #f97316;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 23, 42, 0.98);
+                flex-direction: column;
+                padding: 2rem 0;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Renovorm</a>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Diensten</a></li>
+                <li><a href="#about">Over Ons</a></li>
+                <li><a href="#inspections">Inspecties</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="tel:020-1234567" class="cta-button">020-123 4567</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Rioolspecialist Amsterdam</h1>
+                    <p>Meer dan 40 jaar ervaring in ontstoppingen, camera-inspecties, rookproeven en leidingen uitpeilen. Betrouwbare service voor Amsterdam, Landsmeer, Oostzaan en omstreken.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">Direct Contact</a>
+                        <a href="#services" class="btn-secondary">Onze Diensten</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Onze Specialiteiten</h2>
+                    <p>Renovorm is uw betrouwbare partner voor alle ontstoppings- en rioolwerkzaamheden</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🔧</div>
+                        <h3>Ontstoppingen</h3>
+                        <p>Professionele ontstopping van alle soorten afvoeren en rioleringen. Snel, effectief en met garantie.</p>
+                        <a href="#contact" class="service-link">Meer info →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📹</div>
+                        <h3>Camera Inspecties</h3>
+                        <p>Moderne camera-inspectie technieken om problemen in leidingen snel en accuraat te lokaliseren.</p>
+                        <a href="#inspections" class="service-link">Meer info →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💨</div>
+                        <h3>Rookproeven</h3>
+                        <p>Detectie van lekkages en problemen in rioolsystemen met behulp van professionele rookproeven.</p>
+                        <a href="#inspections" class="service-link">Meer info →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📏</div>
+                        <h3>Leidingen Uitpeilen</h3>
+                        <p>Nauwkeurige metingen en analyse van leidingsystemen voor optimale werking.</p>
+                        <a href="#inspections" class="service-link">Meer info →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🚿</div>
+                        <h3>Loodgieterswerk</h3>
+                        <p>Vakkundige loodgietersservice voor alle sanitaire installaties en reparaties.</p>
+                        <a href="#contact" class="service-link">Meer info →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3>Spoed Service</h3>
+                        <p>24/7 spoeddienst voor acute problemen. Wij bellen 15 minuten van tevoren!</p>
+                        <a href="#contact" class="service-link">Bel direct →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Vakmanschap & Ervaring</h2>
+                        <p>Renovorm is dé specialist in ontstoppingen, camera-inspecties, rookproeven en leidingen uitpeilen. Met meer dan 40 jaar ervaring zijn wij een allround specialist die van alle markten thuis is.</p>
+                        <p>Is de riolering of andere afvoer verstopt? Geen probleem voor onze ervaren loodgieters en ontstoppers. Wij maken gebruik van verschillende technieken voor leidingsinspectie om snel achter problemen te komen.</p>
+                        <span class="experience-badge">✓ 40+ Jaar Ervaring</span>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">40+</span>
+                            <span class="stat-label">Jaar Ervaring</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Beschikbaar</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Tevreden Klanten</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">15min</span>
+                            <span class="stat-label">Van Tevoren Bellen</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quote">
+            <div class="container">
+                <blockquote>
+                    "Heeft u dagelijks een strakke planning en is het moeilijk voor u om een dagdeel thuis te blijven wachten? Wij kunnen u 15 minuten van te voren bellen, voordat de monteur bij u is! Heel handig voor als u bijvoorbeeld dicht bij huis werkt."
+                </blockquote>
+            </div>
+        </section>
+
+        <section id="inspections" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Leidingsinspecties</h2>
+                    <p>Moderne technieken om snel achter problemen met afvoeren en rioleringen te komen</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">💨</div>
+                        <h3>Rookproef</h3>
+                        <p>Met rookproeven kunnen we snel en effectief lekkages in het rioolsysteem detecteren. Deze methode geeft duidelijk aan waar problemen zich bevinden.</p>
+                        <a href="#contact" class="service-link">Vraag offerte aan →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📹</div>
+                        <h3>Camera Inspectie</h3>
+                        <p>Onze professionele camera-apparatuur geeft een duidelijk beeld van de staat van uw leidingen en localiseert problemen met precisie.</p>
+                        <a href="#contact" class="service-link">Vraag offerte aan →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📏</div>
+                        <h3>Uitpeilen</h3>
+                        <p>Door leidingen uit te peilen kunnen we de exacte ligging en diepte vaststellen, essentieel voor reparaties en onderhoud.</p>
+                        <a href="#contact" class="service-link">Vraag offerte aan →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Contact</h2>
+                    <p>Neem contact op voor een vrijblijvende offerte of spoedservice</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Direct Contact</h3>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <strong>Telefoon</strong><br>
+                                <a href="tel:020-1234567" style="color: #f97316;">020-123 4567</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <strong>Email</strong><br>
+                                <a href="mailto:info@renovorm.nl" style="color: #f97316;">info@renovorm.nl</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <strong>Werkgebied</strong><br>
+                                Amsterdam, Landsmeer, Oostzaan en omstreken
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">⏰</div>
+                            <div>
+                                <strong>Beschikbaarheid</strong><br>
+                                24/7 spoeddienst beschikbaar
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm" onsubmit="handleSubmit(event)">
+                            <div class="form-group">
+                                <label for="name">Naam</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefoon</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Beschrijving van het probleem</label>
+                                <textarea id="message" name="message" placeholder="Beschrijf uw probleem, zodat wij u beter kunnen helpen..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary" style="width: 100%;">Verstuur Aanvraag</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Renovorm</h4>
+                    <p style="color: #cbd5e1;">Uw betrouwbare rioolspecialist met meer dan 40 jaar ervaring in Amsterdam en omstreken.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Diensten</h4>
+                    <ul>
+                        <li><a href="#services">Ontstoppingen</a></li>
+                        <li><a href="#inspections">Camera Inspecties</a></li>
+                        <li><a href="#inspections">Rookproeven</a></li>
+                        <li><a href="#inspections">Leidingen Uitpeilen</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Werkgebied</h4>
+                    <ul>
+                        <li>Amsterdam</li>
+                        <li>Landsmeer</li>
+                        <li>Oostzaan</li>
+                        <li>Omliggende gemeenten</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:020-1234567">020-123 4567</a></li>
+                        <li><a href="mailto:info@renovorm.nl">info@renovorm.nl</a></li>
+                        <li>24/7 Spoeddienst</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Renovorm - Ontstoppingsdienst Amsterdam. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click',
